@@ -34,10 +34,11 @@ class EyeFollow extends Component {
 
                         </div>
                     </div>
-                    <h3>_______</h3>
+                    <h3 className="text">_______</h3>
                 </div>
 
 {/* <h3> Welcome To My Website !!!</h3> */}
+
             </div>
 
         )

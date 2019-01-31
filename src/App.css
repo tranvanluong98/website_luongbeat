@@ -8,6 +8,7 @@ body{
   /* transform: translateZ(0); */
   overflow-x: hidden;
   background: #2c3e50;
+  font-family: 'Poppins',sans-serif;
   /* display: flex;  */
    /* align-items: center; */
 }
@@ -27,7 +28,7 @@ h3::before{
   /* content: 'hello!!!'; */
   content: '';
   width: 0%;
-  height: 108px;
+  height: 90px;
   background: #ebe839;
   position: absolute;
   top: 0;
@@ -35,18 +36,24 @@ h3::before{
   animation: animate  4.5s;
 
 }
-
-
-
-h3{
-  
-  /* transition-delay: 4.5s; */
+.h3, h3{
+  line-height: 3.2;
+    font-size: 1.75rem;
+}
+/* h3{
+ 
   border-radius: 55px;
   width: 30%;
   z-index: 1;
-  /* content: 'hello!!!'; */
-  /* background: #ebe839; */
+  
   background: #f7c707;
+} */
+
+.text{
+  line-height: 3.2;
+  width: 30%;
+  background: #f7c707;
+  border-radius: 55px;
 }
 @keyframes animate{
   0%{
@@ -75,7 +82,16 @@ h3{
   }
   
 }
-
+.product{
+  padding: 5vw;
+  margin-top: 15%;
+}
+h1{
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  font-size: 6vw;
+}
 .eyes{
   position: absolute;
   top: 51%;
@@ -141,6 +157,7 @@ background: #ffffff;
  /* HoverLogin
   */
  ul{
+   z-index: 2;
    position: fixed;
     top: 10%;
   left: 50%;
@@ -208,16 +225,8 @@ text-decoration: none;
    transform: scaleX(1);
  }
 
- /* Sticky Image Scroll */
-/* 
- .container-fluid{
-   position: relative;
-   z-index: -1;
-   width: 100%;
-
- } */
 .section{
-  /* position: sticky; */
+  
   width: 100%;
   height: 100vh;
   z-index: -51;
@@ -226,7 +235,14 @@ text-decoration: none;
 justify-content: center;
   /* background:  */
  }
-
+.carousel-item{
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
+  display: relative;
+justify-content: center;
+}
 #background-video {
 
     position: fixed;
@@ -235,22 +251,51 @@ justify-content: center;
     bottom: 0;
     min-width: 100%;
     min-height: 100%;
-    /* background-color: rgba(128, 81, 81, 0.5); */
     z-index: -1;
-    
     filter: blur(2px);
 }
-
+.section_image{
+  width: 100%;
+  height: 100vh;
+  z-index: -51;
+  /* add smooth scroll */
+  /* display: flex; */
+justify-content: center;
+}
 .section::before{
   content: attr(data-text);
   font-size: 9em;
   font-weight: bold;
 }
- /* .container-fluid .section:nth-child(1){
-background: url('https://images.pexels.com/photos/346824/pexels-photo-346824.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
-background-size: cover;
- } */
+.section_image::before{
+  content: attr(data-text);
+  font-size: 9em;
+  font-weight: bold;
+}
+
+
  .section:nth-child(2){
+  background: url('./img/IMG_7583.JPG');
+  background-size: cover;
+   }
+ .section_image:nth-child(3){
+
+   z-index: 1; 
+  
+    /* position: relative; */
+/* background: url('./img/IMG_7589.JPG'); */
+background-size: cover;
+
+ }
+  .section:nth-child(4){
+background: url('./img/IMG_7556.JPG');
+background-size: cover;
+ }
+.section:nth-child(5){
+background: url('./img/IMG_7887.JPG');
+background-size: cover;
+ }
+ /* .section:nth-child(2){
   background: url('https://images.pexels.com/photos/2326/fashion-person-woman-taking-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
   background-size: cover;
    }
@@ -265,7 +310,7 @@ background-size: cover;
 .section:nth-child(5){
 background: url('https://images.pexels.com/photos/1656324/pexels-photo-1656324.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
 background-size: cover;
- }
+ } */
  
  /* .container-fluid .section:nth-child(2){
 background: url('https://images.pexels.com/photos/1374510/pexels-photo-1374510.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
