@@ -13,11 +13,10 @@ import {
     {
       src:require(`./1.jpg`),
       altText: 'MÁI CHE HOÀNG QUÝ',
-     
       caption: 'https://maichehoangquy.com'
     },
     {
-      src: require(`./2.jpg`),
+      src: require(`./2.jpg`),  
       altText: 'MH STONE',
       caption: 'https://mhstone.herokuapp.com'
     },
@@ -84,24 +83,37 @@ class HoverMenu extends Component {
               onExited={this.onExited}
               key={item.src}
             >
-              <img   src={item.src} alt={item.altText} />
+              <img  className="imgslide" src={item.src} alt={item.altText} />
               <CarouselCaption captionText={item.caption} captionHeader={item.caption} />
             </CarouselItem>
           );
         });
         return (
             <div>
-                
-                <ul>
+                {/* add reponsive navigation */}
+                <input type='checkbox' id='chk' />
+                  <label for='chk'className="show-menu-btn">  
+                  <i className="fas fa-bars"></i>
+                  </label>
+               
+
+                {/* navigation without reponsive */}
+
+
+                <ul className="menu">
      
                     <li> <a  href="#sec1"> HOME</a> </li>
                     <li> <a href="#sec2" >ABOUT US </a> </li>
-                    <li> <a href="#sec3">PRODUCT </a> </li>
-                    <li> <a href="#sec4">TALENT </a> </li>
+                    <li> <a href="#sec3">STYLE </a> </li>
+                    <li> <a href="#sec4">DRAMA </a> </li>
                     <li> <a href="#sec5"> CONTACT</a> </li>
+                    <label for='chk' className="hide-menu-btn">
+                    <i className="fas fa-times"></i>
+                    </label>
                 </ul>
+
                 <EyeFollow  />
-                <audio  loop className="music-edit" src={require("./thisfelling.MP3")} controls />
+                <audio auto  loop className="music-edit" src={require("./thisfelling.MP3")} controls />
 
                     <div className="wrap-video">
                         <video id="background-video" loop autoPlay muted >
@@ -116,8 +128,12 @@ class HoverMenu extends Component {
                     
                     <div className="product">
                    
-                            <h1> ABOUT US</h1>
-                            <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                            {/* <h1> ABOUT US</h1> */}
+                            <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type 
+                              and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic 
+                              typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
+                               Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem
+                                Ipsum.</p>
                         </div>
                      </div>
 
