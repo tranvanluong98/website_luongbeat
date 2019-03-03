@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
+import '../../node_modules/font-awesome/css/font-awesome.min.css'
 import video from '../video/fuk.mp4'
 import EyeFollow from './Eye';
+
 import {
     Carousel,
     CarouselItem,
@@ -8,22 +10,52 @@ import {
     CarouselIndicators,
     CarouselCaption
   } from 'reactstrap';
-  
+  var FontAwesome = require('react-fontawesome');
   const items = [
     {
-      src:require(`./1.jpg`),
+      href:"https://maichehoangquy.com",
+      src:require(`../img/maichehoangquy.PNG`),
       altText: 'MÁI CHE HOÀNG QUÝ',
       caption: 'https://maichehoangquy.com'
     },
     {
-      src: require(`./2.jpg`),  
+      src: require(`../img/mhstone.PNG`),  
       altText: 'MH STONE',
       caption: 'https://mhstone.herokuapp.com'
     },
     {
-      src: require(`./3.jpg`),
+      src: require(`../img/battlenow.png`),
       altText: 'BATTLE NOW',
       caption: 'https://battlenow.herokuapp.com'
+     
+    },
+    {
+      src: require(`../img/pacman.png`),
+     
+      caption: 'GAME PACMAN'
+    }
+  ];
+  const items_talent = [
+    {
+      src:require(`../img/guitar.png`),
+      // altText: 'GUITAR',
+      caption:'GUITAR'
+    },
+    {
+      src: require(`../img/beatbox.png`),  
+      // altText: 'BEATBOX',
+      caption:'BEATBOXING'
+    },
+    {
+      src: require(`../img/photo.jpeg`),
+      // altText: 'PHOTOGRAPHER',
+      caption:'PHOTOGRAPHER'
+    }
+    ,
+    {
+      src: require(`../img/editor.jpg`),
+      // altText: 'PHOTOGRAPHER',
+      caption:'EDITOR'
     }
   ];
 class HoverMenu extends Component {
@@ -51,9 +83,21 @@ class HoverMenu extends Component {
         this.setState({ activeIndex: nextIndex });
       }
     
+      
       previous() {
         if (this.animating) return;
         const nextIndex = this.state.activeIndex === 0 ? items.length - 1 : this.state.activeIndex - 1;
+        this.setState({ activeIndex: nextIndex });
+      }
+      next_talent() {
+        if (this.animating) return;
+        const nextIndex = this.state.activeIndex === items_talent.length - 1 ? 0 : this.state.activeIndex + 1;
+        this.setState({ activeIndex: nextIndex });
+      }
+    
+      previous_talent() {
+        if (this.animating) return;
+        const nextIndex = this.state.activeIndex === 0 ? items_talent.length - 1 : this.state.activeIndex - 1;
         this.setState({ activeIndex: nextIndex });
       }
     
@@ -61,19 +105,7 @@ class HoverMenu extends Component {
         if (this.animating) return;
         this.setState({ activeIndex: newIndex });
       }
-//    state ={
-//         numberOfImage : 1
-//    }
-//    changeImage =() =>{
-    
-//        console.log( this.state.numberOfImage)
-//        this.setState({numberOfImage:(this.state.numberOfImage % 5) +1 })
-//    }
 
-//     componentDidMount(){
-//         setInterval(this.changeImage, 3000  )
-
-//     }
     render() {
         const { activeIndex } = this.state;
         const slides = items.map((item) => {
@@ -83,37 +115,51 @@ class HoverMenu extends Component {
               onExited={this.onExited}
               key={item.src}
             >
-              <img  className="imgslide" src={item.src} alt={item.altText} />
-              <CarouselCaption captionText={item.caption} captionHeader={item.caption} />
+              <img  style={{height:"100vh",width:"100%"}} src={item.src} />
+              <CarouselCaption captionText={item.caption}/>
+            </CarouselItem>
+          );
+        });
+        const slides_talent = items_talent.map((items_talent) => {
+          return (
+            <CarouselItem 
+              onExiting={this.onExiting}
+              onExited={this.onExited}
+              key={items_talent.src}
+            >
+              <img   style={{height:"100vh",width:"100%"}}  src={items_talent.src} alt={items_talent.altText} />
+              <CarouselCaption  captionHeader={items_talent.caption} />
             </CarouselItem>
           );
         });
         return (
-            <div>
-                {/* add reponsive navigation */}
-                <input type='checkbox' id='chk' />
-                  <label for='chk'className="show-menu-btn">  
-                  <i className="fas fa-bars"></i>
-                  </label>
-               
+         <div>
+                 
+         <div className="header">
+        {/* <h2 class="logo">LUONG BEAT</h2> */}
+        {/* <input type="checkbox" id="chk"/>
+        <label htmlFor="chk" className="show-menu-btn">
+        <FontAwesome
+          className="fas fa-ellipsis-h"
+          name="ellipsis-h"
+          />
+        </label> */}
 
-                {/* navigation without reponsive */}
-
-
-                <ul className="menu">
-     
-                    <li> <a  href="#sec1"> HOME</a> </li>
-                    <li> <a href="#sec2" >ABOUT US </a> </li>
-                    <li> <a href="#sec3">STYLE </a> </li>
-                    <li> <a href="#sec4">DRAMA </a> </li>
-                    <li> <a href="#sec5"> CONTACT</a> </li>
-                    <label for='chk' className="hide-menu-btn">
-                    <i className="fas fa-times"></i>
-                    </label>
-                </ul>
+        <ul className="menu">
+            <a href="#home">Home</a>
+            <a href="#talent">Talent</a>
+            <a href="#products">Products</a>
+            <a href="#work">Work</a>
+            <a href="#aboutme">About Me</a>
+            {/* <label htmlFor="chk" className="hide-menu-btn">
+                <FontAwesome className="fas fa-times"
+                name="time"/>
+            </label> */}
+        </ul>
+    </div>
 
                 <EyeFollow  />
-                <audio auto  loop className="music-edit" src={require("./thisfelling.MP3")} controls />
+                <audio autoPlay  loop title="This Feeling - The Chainsmokers" className="music-edit" src={require("./thisfelling.MP3")} controls />
 
                     <div className="wrap-video">
                         <video id="background-video" loop autoPlay muted >
@@ -123,21 +169,25 @@ class HoverMenu extends Component {
                        
                     </div>
                     <div>
-                    <div className="section" id="sec1" data-text=""> </div>
-                    <div className="section" id="sec2" data-text="">
-                    
-                    <div className="product">
+
+                      {/* part1 */}
+                    <div className="section" id="home" data-text=""> </div>
+
+                    {/* part2 */}
                    
-                            {/* <h1> ABOUT US</h1> */}
-                            <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type 
-                              and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic 
-                              typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
-                               Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem
-                                Ipsum.</p>
-                        </div>
+
+                     <div className="section_image"  id="talent" data-text="" >
+                    {/* Slide */}
+                    <Carousel  activeIndex={activeIndex}   >
+                        <CarouselIndicators  items={items_talent} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
+                        {slides_talent}
+                       
+                    </Carousel>
                      </div>
 
-                    <div className="section_image"  id="sec3" data-text="" >
+                      {/* part3 */}
+
+                    <div className="section_image"  id="products" data-text="" >
                     {/* Slide */}
                     <Carousel  activeIndex={activeIndex}  next={this.next}  previous={this.previous} >
                         <CarouselIndicators  items={items} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
@@ -147,14 +197,31 @@ class HoverMenu extends Component {
                     </Carousel>
                      </div>
 
-                    <div className="section" id="sec4" data-text="">
+                    <div className="section" id="work" data-text="">
                    
                      </div>
-                    <div className="section" id="sec5" data-text="">
-                    
+                    <div className="section" id="aboutme" data-text="">
+
+                      <a href="https:fb.com/luongbeat98" target="_blank" alt="My Facebook" title="My Facebook" >
+                      <img src={'http://www.stickpng.com/assets/images/58e91965eb97430e819064f5.png'} style={{textAlign:"center", marginRight:"20px",position:"relative",width:"70px",height:"70px",top:"29%",right:"40%"}} />
+                     </a>
+                      <a href="https:github.com/tranvanluong98" target="_blank" alt="My Github" title="My Github" >
+                      <img src={'https://cdn.freebiesupply.com/logos/large/2x/github-icon-1-logo-png-transparent.png'} style={{textAlign:"center",marginRight:"20px",position:"relative",width:"60px",height:"60px",top:"30%",right:"30%"}} />
+                     </a>
+                      <a href="https://www.instagram.com/luongbeat/"  target="_blank" alt="My Instagram" title="My Instagram" >
+                      <img src={'http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c521.png'} style={{textAlign:"center",marginRight:"20px",position:"relative",width:"60px",height:"60px",top:"30%",right:"20%"}}/>
+                     </a>
+                      <a href="https://www.youtube.com/channel/UCazkthqkluHEoIbK9w1yckA?view_as=subscriber" title="My Youtube Channel"  alt="My Youtube Channel" target="_blank" >
+                      <img src={'http://assets.stickpng.com/thumbs/580b57fcd9996e24bc43c545.png'} style={{textAlign:"center",marginRight:"20px",position:"relative",width:"65px",height:"65px",top:"30%",right:"15%"}}/>
+                     </a>
                      </div>
-</div>
-                
+                    </div>
+                {/* footage */}
+                <div className="footage">
+                    <span>
+                     @2019 LB HUST copyright 
+                    </span>
+                  </div>
             </div>
         )
     }
